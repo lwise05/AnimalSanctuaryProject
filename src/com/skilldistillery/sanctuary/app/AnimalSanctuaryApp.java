@@ -2,7 +2,11 @@ package com.skilldistillery.sanctuary.app;
 
 import java.util.Scanner;
 
+import com.skilldistillery.sanctuary.entities.Animal;
 import com.skilldistillery.sanctuary.entities.Attendant;
+import com.skilldistillery.sanctuary.entities.Crocodile;
+import com.skilldistillery.sanctuary.entities.DesertRainFrog;
+import com.skilldistillery.sanctuary.entities.Gecko;
 import com.skilldistillery.sanctuary.entities.Sanctuary;
 
 public class AnimalSanctuaryApp {
@@ -22,7 +26,9 @@ public class AnimalSanctuaryApp {
 
 		int userChoice;
 		do {
+			System.out.println("");
 			System.out.println("Please choose from the following menu choices: ");
+			System.out.println("");
 			printMenu();
 			userChoice = sc.nextInt();
 
@@ -33,10 +39,9 @@ public class AnimalSanctuaryApp {
 				break;
 			case 2:
 				System.out.println("Please choose what kind of animal you'd like to add to the sancturacy: ");
-				animalChoices();
-
-//				sanc.addAnimal(animal); // still trying to figure out how to add animalchoice() input into addAnimal
-
+				animalMenu();
+				Animal newAnimal = returnAnimal();
+				sanc.addAnimal(newAnimal); // still trying to figure out how to add animalchoice() input into addAnimal
 				break;
 
 			case 3:
@@ -54,42 +59,72 @@ public class AnimalSanctuaryApp {
 	}
 
 	private void printMenu() {
-		System.out.println("\t Would you like to... \t");
-		System.out.println("1. Meet the animals. See what all animals are currently in the sanctuary.");
-		System.out.println("2. Add an animal to the sanctuary.");
-		System.out.println("3. Have the sanctuary attendant feed all the animals.");
-		System.out.println("4. Exit the game.");
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.println("*\t\t\t\t Would you like to...                   *");
+		System.out.println("*                                                                       *");
+		System.out.println("*\t 1. See what all animals are currently in the sanctuary.        *");
+		System.out.println("*\t 2. Add an animal to the sanctuary.                             *");
+		System.out.println("*\t 3. Have the sanctuary attendant feed all the animals.          *");
+		System.out.println("*\t 4. Exit the game.                                              *");
+		System.out.println("-------------------------------------------------------------------------");
 	}
 
-	public void animalChoices() {
-		int animalChoice = sc.nextInt();
+	public void animalMenu() {
 
 		System.out.println("1. Desert Rain Frog");
 		System.out.println("2. Gecko");
 		System.out.println("3. Crocodile");
 		System.out.println("4. Return to Menu");
 
-		do {
+		
+		// get useranimalchoice method
+	}
 
+	public Animal returnAnimal() { 
+		boolean keepGoing = true;
+		Animal userAnimalChoice = new Animal();
+		do {
+			int animalChoice = sc.nextInt();
+			String name;
+				
 			switch (animalChoice) {
 			case 1:
 				System.out.println("Nice! Let's add your desert rain frog to an enclosure.");
-//				sanc.addAnimal();
+				userAnimalChoice = new DesertRainFrog();
+				System.out.println("What would you like to name the desert rain frog?");
+				name = sc.next();
+				userAnimalChoice.setName(name);
+				keepGoing = false;
 				break;
 			case 2:
 				System.out.println("Great choice! Let's add your gecko to an enclosure.");
+				userAnimalChoice = new Gecko();
+				System.out.println("What would you like to name the gecko?");
+				name = sc.next();
+				userAnimalChoice.setName(name);
+				keepGoing = false;
 				break;
 			case 3:
 				System.out.println("I like it! Let's add your crocodile to an enclosure.");
+				userAnimalChoice = new Crocodile();
+				System.out.println("What would you like to name the desert rain frog?");
+				name = sc.next();
+				userAnimalChoice.setName(name);
+				keepGoing = false;
 				break;
 			case 4:
 				System.out.println("Return to menu.");
+				keepGoing = false;
 				break;
 			default:
-				System.out.println("Oops! You ");
-
+				System.out.println("Oops! You entered an invalid choice. Choose from 1-4.");
 			}
-		} while (animalChoice != 4);
-
+		} while (keepGoing);
+		return userAnimalChoice;
 	}
+	
+//	public void arrayAdd () {
+//		Animal [] = new DesertF
+//	}
+
 }

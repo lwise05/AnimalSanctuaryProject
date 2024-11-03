@@ -1,8 +1,8 @@
 package com.skilldistillery.sanctuary.entities;
 
-import java.util.Set;
+//import java.util.Set;
 
-public class Attendant extends Sanctuary {
+public class Attendant {
 
 	public void makeRounds(Animal[] animals) {
 		for (int i = 0; i < animals.length; i++) {

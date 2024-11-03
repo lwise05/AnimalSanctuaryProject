@@ -23,8 +23,9 @@ public class Sanctuary {
 
 	public void listAnimals() {
 		for (int i = 0; i < animals.length; i++) {
-			if (animals.equals(null)) {
-				System.out.println("This enclosure is empty");
+
+			if (animals[i] == null) {
+				System.out.println(i + ": This enclosure is empty");
 			} else {
 				System.out.println(i + ": " + animals[i]);
 			}
@@ -39,6 +40,7 @@ public class Sanctuary {
 			}
 
 		}
+
 	}
 
 	public void startAttendantRounds() {
