@@ -1,8 +1,10 @@
 package com.skilldistillery.sanctuary.entities;
 
 public class Sanctuary {
-
+	
+	private Attendant attendant = new Attendant();
 	private Animal[] animals = new Animal[5];
+
 	{
 		animals[0] = new DesertRainFrog();
 		animals[0].setName("froggy");
@@ -14,9 +16,11 @@ public class Sanctuary {
 		animals[4] = null;
 
 	}
+	
+	public Sanctuary(){
 
-	private Attendant attendant;
-
+	}
+	
 	public void setAttendant(Attendant attendant) {
 		this.attendant = attendant;
 	}
@@ -31,19 +35,22 @@ public class Sanctuary {
 			}
 		}
 	}
-
+	
 	public void addAnimal(Animal animal) {
+//		boolean canAddAnimal = 
 		for (int i = 0; i < animals.length; i++) {
 			if (animals[i] == null) {
-				animals[i] = animal;
+				animals[i] = animal;	
 				break;
 			}
-
-		}
-
 	}
+	}
+	
+//	public void checkAnimal() { trying to figure out how to return sysout stating array is full
+//		
+//	}
 
 	public void startAttendantRounds() {
-		attendant.makeRounds(animals);
+		this.attendant.makeRounds(animals);
 	}
 }

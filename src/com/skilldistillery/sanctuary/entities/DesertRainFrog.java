@@ -10,17 +10,19 @@ public class DesertRainFrog extends Animal {
 
 	@Override
 	public void makeNoise() {
-		System.out.println(noise);
+		System.out.print(noise);
 	}
 	
 	@Override
 	public void eat(int amount) {
-		int food = 0;
-		System.out.println(noise + " I love eating these " + food + " moths.");
+		int food = amount;
+		makeNoise();
+		System.out.println(" I love eating these " + food + " moths.");
+		System.out.println();
 	}
 	@Override
 	public String toString() {
-		return "I'm " + this.getName() + " the Desert Rain Frog";
+		return this.getName() + " the Desert Rain Frog";
 	}
 
 }
