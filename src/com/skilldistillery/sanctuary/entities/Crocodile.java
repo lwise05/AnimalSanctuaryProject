@@ -1,6 +1,6 @@
 package com.skilldistillery.sanctuary.entities;
 
-public class Crocodile extends Animal{
+public class Crocodile extends Animal{ 
 	private static String noise = "Roar!";
 	
 	public Crocodile() {

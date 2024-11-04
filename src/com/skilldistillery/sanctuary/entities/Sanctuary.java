@@ -19,7 +19,7 @@ public class Sanctuary {
 	
 	public Sanctuary(){
 
-	}
+	} 
 	
 	public void setAttendant(Attendant attendant) {
 		this.attendant = attendant;

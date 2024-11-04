@@ -2,7 +2,7 @@ package com.skilldistillery.sanctuary.entities;
 
 //import java.util.Set;
 
-public class Attendant {
+public class Attendant { 
 		
 	public Attendant() {
 

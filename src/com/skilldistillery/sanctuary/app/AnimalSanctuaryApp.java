@@ -10,12 +10,16 @@ import com.skilldistillery.sanctuary.entities.Sanctuary;
 
 public class AnimalSanctuaryApp {
 
-	Sanctuary sanc = new Sanctuary();
-	Scanner sc = new Scanner(System.in);
+	Sanctuary sanc;
+	Scanner sc;
 
 	public static void main(String[] args) {
 		AnimalSanctuaryApp app = new AnimalSanctuaryApp();
+		app.sanc = new Sanctuary();
+		app.sc = new Scanner(System.in);
+		
 		app.launchApp();
+		app.sc.close();
 	}
 
 	private void launchApp() {
@@ -28,34 +32,55 @@ public class AnimalSanctuaryApp {
 			System.out.println("Please choose from the following menu choices: ");
 			System.out.println("");
 			printMenu();
-			userChoice = sc.nextInt();
+			userChoice = this.sc.nextInt();
 
 			switch (userChoice) {
-
-			case 1:
-				sanc.listAnimals();
-				break;
-				
-			case 2:
-				System.out.println("Please choose what kind of animal you'd like to add to the sancturacy: ");
-				animalMenu(); // print animal menu
-				Animal newAnimal = returnAnimal(); // returnAnimal allows user to 
-				sanc.addAnimal(newAnimal); // still trying to figure out how to add animalchoice() input into addAnimal
-				break;
-
-			case 3:
-				
-				sanc.startAttendantRounds();
-				break;
-				
-			case 4:
-				System.out.println("Thank you for visiting the Animal Sancturay! Bye!");
-				sc.close();
-				break;
-				
-			default:
-				System.out.println("Oops! You entered an invalid choice. Please choose 1 - 4. ");
-			}
+				case 1:
+					sanc.listAnimals();
+					break;
+				case 2:
+					System.out.println("Please choose what kind of animal you'd like to add to the sancturacy: ");
+					animalMenu(); // print animal menu
+					int animalChoice = this.sc.nextInt();
+					Animal newAnimal;
+					String name;
+					switch(animalChoice) {
+						case 1:
+							Animal frog = new DesertRainFrog();
+							System.out.println("What would you like to name the desert rain frog?");
+							name = sc.next();
+							frog.setName(name);
+							sanc.addAnimal(frog);
+							break;
+						case 2: 
+							Animal gecko = new Gecko();
+							System.out.println("What would you like to name the gecko?");
+							name = sc.next();
+							gecko.setName(name);
+							sanc.addAnimal(gecko);
+							break;
+						case 3:
+							Animal croc = new Crocodile();
+							System.out.println("What would you like to name the crocodile?");
+							name = sc.next();
+							croc.setName(name);
+							sanc.addAnimal(croc);
+							break;
+						default:
+								System.out.println("Oops! You entered an invalid entry. Returning back to the main menu.");
+								break;
+					}
+					break;
+				case 3:
+					sanc.startAttendantRounds();
+					break;
+				case 4:
+					System.out.println("Thank you for visiting the Animal Sancturay! Bye!");
+					sc.close();
+					break;
+				default:
+					System.out.println("Oops! You entered an invalid choice. Please choose 1 - 4. ");
+				}
 		} while (userChoice != 4);
 
 	}
@@ -72,57 +97,9 @@ public class AnimalSanctuaryApp {
 	}
 
 	public void animalMenu() {
-
 		System.out.println("1. Desert Rain Frog");
 		System.out.println("2. Gecko");
 		System.out.println("3. Crocodile");
-//		System.out.println("4. Return to Menu");
-
-		
-		// get useranimalchoice method
 	}
-
-	public Animal returnAnimal() { 
-		boolean keepGoing = true;
-		Animal userAnimalChoice = new Animal(); //initializes new animal variable
-		while (keepGoing) {
-			int animalChoice = sc.nextInt();
-			String name; // initializes name variable 
-			
-			switch (animalChoice) {
-			case 1:
-				System.out.println("Nice! Let's add your desert rain frog to an enclosure.");
-				userAnimalChoice = new DesertRainFrog(); // create new frog
-				System.out.println("What would you like to name the desert rain frog?");
-				name = sc.next();
-				userAnimalChoice.setName(name); //calls setName method then adds user's new name to animal
-				keepGoing = false; // once false, stops switch
-				break;
-			case 2:
-				System.out.println("Great choice! Let's add your gecko to an enclosure.");
-				userAnimalChoice = new Gecko();
-				System.out.println("What would you like to name the gecko?");
-				name = sc.next();
-				userAnimalChoice.setName(name);
-				keepGoing = false;
-				break;
-			case 3:
-				System.out.println("I like it! Let's add your crocodile to an enclosure.");
-				userAnimalChoice = new Crocodile();
-				System.out.println("What would you like to name the crocodile?");
-				name = sc.next();
-				userAnimalChoice.setName(name);
-				keepGoing = false;
-				break;
-//			case 4:
-//				keepGoing = false;
-//				break;
-			default:
-				System.out.println("Oops! You entered an invalid choice. Choose from 1-4.");
-			}
-		}
-		return userAnimalChoice;
-	}
-	
-
 }
+

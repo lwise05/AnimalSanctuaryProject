@@ -4,7 +4,7 @@ public class DesertRainFrog extends Animal {
 	private static String noise = "Squeak!";
 	
 	public DesertRainFrog() {	
-	}
+	} 
 	
 	
 

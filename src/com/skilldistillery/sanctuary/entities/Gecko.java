@@ -4,7 +4,7 @@ public class Gecko extends Animal {
 	private static String noise = "Chirp!";
 	
 	public Gecko() {
-	}
+	} 
 
 	@Override
 	public void makeNoise() {
