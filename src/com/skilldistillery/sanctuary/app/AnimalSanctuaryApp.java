@@ -10,11 +10,11 @@ import com.skilldistillery.sanctuary.entities.Sanctuary;
 
 public class AnimalSanctuaryApp {
 
-	Sanctuary sanc;
+	Sanctuary sanc; // initializing sanc and scanner to use in my class 
 	Scanner sc;
 
 	public static void main(String[] args) {
-		AnimalSanctuaryApp app = new AnimalSanctuaryApp();
+		AnimalSanctuaryApp app = new AnimalSanctuaryApp(); // instaniating the app object
 		app.sanc = new Sanctuary();
 		app.sc = new Scanner(System.in);
 		
@@ -37,8 +37,13 @@ public class AnimalSanctuaryApp {
 			switch (userChoice) {
 				case 1:
 					sanc.listAnimals();
+					
 					break;
 				case 2:
+					if (sanc.isFull()) {
+						System.out.println("Looks like the enclosures are full! Unable to add more animals.");
+						break;
+					}
 					System.out.println("Please choose what kind of animal you'd like to add to the sancturacy: ");
 					animalMenu(); // print animal menu
 					int animalChoice = this.sc.nextInt();
